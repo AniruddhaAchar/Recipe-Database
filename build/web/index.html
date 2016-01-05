@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Recipe Database</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <style>
+            body { background: #eee !important; }
+        </style>
+    </head>
+
+    <body>
+        <div class = "container">
+            <div class = "col-xs-12">
+                <div class = "row">
+                    <div class="page-header">
+                        <h1 class="text-center">Recipe Database</h1>
+                    </div>
+                    <div class = "row">
+                        <div class = "col-xs-4">
+                            <h3 class = "lead">
+                                Search for recipes.
+                            </h3>
+                            <form class="navbar-form navbar-left" role="search" method="post" action="recipesearch.jsp">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Search for Recpies" name="rname">
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+                        </div>
+                        <div class="col-md-4 col-md-offset-4">
+                            <h3 class = "lead">
+                                Search recipes by ingredients.
+                            </h3>
+                            <form class="navbar-form navbar-left" role="search" method="post" action="ingredientsearch.jsp">
+                                <div class="form-group">
+                                    <div id="add_ing">
+                                        <input type="text" class="form-control" placeholder="Ingredients" name="ingr[]">
+                                    </div>
+                                    <button type="button" class="btn btn-default" onclick="addInput()">Add one more ingredient</button>
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class = "col-xs-4 col-md-offset-4">
+                            <div class="bg-info">
+                                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href = 'Recipes.jsp'">Browse Recipes</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class = "row">
+                        <div class = "col-xs-4 col-md-offset-4">
+                            <div class="bg-info">
+                                <button type="button" class="btn btn-primary btn-lg btn-block" onclick="location.href = 'AddRecipes.html'">Add Recipe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            var counter = 1;
+            function addInput() {
+                if (counter < 6)
+                {
+                    var newdiv = document.createElement('div');
+                    newdiv.innerHTML = "<input type=\"text\" class=\"form-control\" placeholder=\"Ingredients\" name=\"ingr[]\">";
+                    document.getElementById('add_ing').appendChild(newdiv);
+                    counter++;
+                }
+                else
+                {
+                    alert("Sorry cannot add anymore ingredients to be searched");
+                }
+            }
+        </script>
+    </body>
+</html>
